@@ -124,13 +124,13 @@ function bottimmo_widget_setting_slug() {
 function bottimmo_widget_append_javascript() {
   wp_enqueue_script(
     'bottimmo_widget_settings_loader',
-    str_replace( ABSPATH, '/', __DIR__ ) . '/assets/js/settings.inc.js',
+    str_replace( ABSPATH, '/', __DIR__ ) . '/build/assets/js/settings.inc.js',
     false,
     '1.0'
   );
     wp_enqueue_script(
       'bottimmo_widget_iframe_loader',
-      str_replace( ABSPATH, '/', __DIR__ ) . '/assets/js/iframe-loader.js',
+      str_replace( ABSPATH, '/', __DIR__ ) . '/build/assets/js/iframe-loader.js',
       false,
       '1.0'
     );
@@ -140,13 +140,13 @@ add_action('wp_footer', 'bottimmo_widget_append_javascript');
 function bottimmo_widget_append_admin_script() {
   wp_enqueue_script(
     'bottimmo_widget_settings_loader',
-    str_replace( ABSPATH, '/', __DIR__ ) . '/assets/js/settings.inc.js',
+    str_replace( ABSPATH, '/', __DIR__ ) . '/build/assets/js/settings.inc.js',
     false,
     '1.0'
   );
   wp_enqueue_script(
     'bottimmo_widget_iframe_loader',
-    str_replace( ABSPATH, '/', __DIR__ ) . '/assets/js/iframe-loader.js',
+    str_replace( ABSPATH, '/', __DIR__ ) . '/build/assets/js/iframe-loader.js',
     false,
     '1.0'
   );

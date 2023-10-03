@@ -11,7 +11,7 @@
 		"build:demo": "LP_ENVIRONMENT=demo LP_DOMAIN=bottimmo.com wp-scripts build",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "npm run build && wp-scripts plugin-zip",
-		"plugin-zip:leadturbo": "npm run build:leadturbo && wp-scripts plugin-zip && cp bottimmo-widget.zip lead-turbo-widget.zip",
+		"plugin-zip:leadturbo": "npm run build:leadturbo && wp-scripts plugin-zip && cp bottimmo-widget.zip leadturbo-widget.zip",
 		"plugin-zip:demo": "npm run build:demo && wp-scripts plugin-zip && cp bottimmo-widget.zip bottimmo-demo-widget.zip",
 		"prettier": "prettier -w .",
 		"start": "wp-scripts start"
