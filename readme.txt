@@ -7,6 +7,7 @@ Requires at least: 6.0
 Tested up to: 6.3.1
 Stable tag: 1.0.0
 Requires PHP: 7.0
+Tags: bottimmo, leadturbo
 
 Mit ein paar einfachen Klicks binden Sie Ihre BOTTIMMO Widgets in Ihrer WordPress Website ein.
 
@@ -52,6 +53,9 @@ Nach Auswahl des Blocks, folgen Sie den Anweisungen im Plugin (build/assets/scre
 2. Erstellen Sie einen neuen Block build/assets/screenshot-2.png
 3. Suchen Sie nach dem BOTTIMMO Widget Plugin build/assets/screenshot-3.png
 4. Folgen Sie den Anweisungen im Plugin build/assets/screenshot-4.png
+
+== Upgrade Notice ==
+n.a.
 
 == Changelog ==
 
