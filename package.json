@@ -1,0 +1,29 @@
+{
+	"name": "bottimmo-widget",
+	"version": "1.0.0",
+	"description": "A Gutenberg block to help implementing BOTTIMMO Widgets.",
+	"author": "BOTTIMMO IT <it@bottimmo.com>",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "LP_ENVIRONMENT=production LP_DOMAIN=immowissen.org wp-scripts build",
+		"build:leadturbo": "LP_ENVIRONMENT=leadturbo LP_DOMAIN=remax-wissen.de wp-scripts build",
+		"build:demo": "LP_ENVIRONMENT=demo LP_DOMAIN=bottimmo.com wp-scripts build",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "npm run build && wp-scripts plugin-zip",
+		"plugin-zip:leadturbo": "npm run build:leadturbo && wp-scripts plugin-zip && cp bottimmo-widget.zip lead-turbo-widget.zip",
+		"plugin-zip:demo": "npm run build:demo && wp-scripts plugin-zip && cp bottimmo-widget.zip bottimmo-demo-widget.zip",
+		"prettier": "prettier -w .",
+		"start": "wp-scripts start"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "26.13.0",
+		"copy-webpack-plugin": "11.0.0",
+		"prettier": "3.0.3",
+		"webpack": "5.88.2"
+	},
+	"dependencies": {
+		"@wordpress/api-fetch": "6.39.0",
+		"@wordpress/components": "25.8.0"
+	}
+}

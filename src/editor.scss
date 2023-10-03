@@ -1,0 +1,23 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-bottimmo-widget {
+  .components-panel__header {
+    padding: 16px;
+  }
+
+  .components-panel__body-title {
+    line-height: 0;
+  }
+
+  .components-base-control {
+    width: 100%;
+  }
+
+  .components-panel__row {
+    font-size: 13px;
+  }
+}
