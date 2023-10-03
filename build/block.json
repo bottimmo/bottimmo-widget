@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/bottimmo-widget",
+  "version": "0.1.0",
+  "title": "BOTTIMMO Widget",
+  "category": "widgets",
+  "description": "Die einfachste Weise BOTTIMMO Widgets einzubinden.",
+  "attributes": {
+    "btmCompany": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "div[data-bottimmo]",
+      "attribute": "data-company",
+      "default": ""
+    },
+    "btmSlug": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "div[data-bottimmo]",
+      "attribute": "data-slug",
+      "default": ""
+    },
+    "btmCookieConsent": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "div[data-bottimmo]",
+      "attribute": "data-cookieconsent",
+      "default": "false"
+    },
+    "btmCustomCookie": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "div[data-bottimmo]",
+      "attribute": "data-consent-cookie",
+      "default": ""
+    },
+    "btmVariant": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "div[data-bottimmo]",
+      "attribute": "data-variant",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "bottimmo-widget",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
