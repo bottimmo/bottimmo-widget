@@ -1,1 +1,270 @@
-"use strict";function _slicedToArray(t,e){return _arrayWithHoles(t)||_iterableToArrayLimit(t,e)||_unsupportedIterableToArray(t,e)||_nonIterableRest()}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _iterableToArrayLimit(t,e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(t)){var n=[],_n=!0,r=!1,o=void 0;try{for(var a,i=t[Symbol.iterator]();!(_n=(a=i.next()).done)&&(n.push(a.value),!e||n.length!==e);_n=!0);}catch(t){r=!0,o=t}finally{try{_n||null==i.return||i.return()}finally{if(r)throw o}}return n}}function _arrayWithHoles(t){if(Array.isArray(t))return t}function _createForOfIteratorHelper(t,e){var n;if("undefined"==typeof Symbol||null==t[Symbol.iterator]){if(Array.isArray(t)||(n=_unsupportedIterableToArray(t))||e&&t&&"number"==typeof t.length){n&&(t=n);var r=0,o=function(){};return{s:o,n:function(){return r>=t.length?{done:!0}:{done:!1,value:t[r++]}},e:function(t){throw t},f:o}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,i=!0,c=!1;return{s:function(){n=t[Symbol.iterator]()},n:function(){var t=n.next();return i=t.done,t},e:function(t){c=!0,a=t},f:function(){try{i||null==n.return||n.return()}finally{if(c)throw a}}}}function _unsupportedIterableToArray(t,e){if(t){if("string"==typeof t)return _arrayLikeToArray(t,e);var n=Object.prototype.toString.call(t).slice(8,-1);return"Object"===n&&t.constructor&&(n=t.constructor.name),"Map"===n||"Set"===n?Array.from(t):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?_arrayLikeToArray(t,e):void 0}}function _arrayLikeToArray(t,e){(null==e||e>t.length)&&(e=t.length);for(var n=0,r=new Array(e);n<e;n++)r[n]=t[n];return r}!function(){var t,e,n,r,o,a,i=(a=null,document.currentScript&&(a=document.currentScript.dataset.consentCookie||null),a),c=Boolean(i),l=[],u=null;function s(){for(var t=document.querySelectorAll("[data-bottimmo]"),e=function(e){var n=t[e],r=n.dataset,o="https://"+r.company+"."+window.BOTTIMMO_LP_DOMAIN;if(console.log("****landingpageDomain",o),"HEAD"===n.parentElement.tagName)return d("If iFrame loader script is placed in the <head> section you should remove all data-* attributes and set them on a dummy <div> inside the body exactly where you want the content to be."),"continue";if(!r.company||!r.slug)return d("Missing attributes on placeholder element: data-company, data-slug"),"continue";if(void 0!==r.initialized)return"continue";var a=document.createElement("iframe"),i=new URL("".concat(o,"/").concat(r.slug,"/embed/"));r.variant&&i.searchParams.append("variant",r.variant);var c,u=document.location.search.split(/[?&]/).filter((function(t){return/^(utm_|gclid|fbclid)/.test(t)})),s=_createForOfIteratorHelper(u);try{for(s.s();!(c=s.n()).done;){var f=_slicedToArray(c.value.split(/=(.+)/),2),m=f[0],y=f[1];i.searchParams.append(m,y)}}catch(t){s.e(t)}finally{s.f()}a.src=i.href,a.style.cssText="width: 100%; height: 500px; overflow: auto; border: none;",n.parentNode.insertBefore(a,n),l.push(a);var p=document.createElement("script");p.src="/wp-content/plugins/bottimmo-widget/build/assets/js/resizer.js",p.async=!0,p.onload=function(){window.iFrameResize({checkOrigin:!1,log:!1},a)},n.parentNode.insertBefore(p,n),n.setAttribute("data-initialized","")},n=0;n<t.length;n++)e(n)}function d(t){window.console&&console.warn("BOTTIMMO: ".concat(t))}window.addEventListener("bottimmo:element-added",(function(){s()})),s(),l.length>0&&(t=new Map,e=function(e){return t.set(e,!0)},n=function(e){return t.has(e)},r=function(){clearInterval(u),u=null},o=function(){var t,e=c?(t=(document.cookie.split("; ")||[]).find((function(t){return t.startsWith(i)})))?t.split("=")[1].split(",").map((function(t){return t.trim()})).filter((function(t){return Boolean(t)})).join(","):null:window.Cookiebot?function(){try{var t=window.Cookiebot;if(t.consented||t.declined){var e=t.consent;return Object.entries({mandatory:e.necessary,marketing:e.marketing,analytics:e.statistics}).filter((function(t){var e=_slicedToArray(t,2),n=(e[0],e[1]);return Boolean(n)})).map((function(t){var e=_slicedToArray(t,2),n=e[0];return e[1],n})).join(",")}}catch(t){}return null}():window.BorlabsCookie?function(){try{var t=window.BorlabsCookie;if(t.checkCookieGroupConsent("essential"))return Object.entries({mandatory:!0,marketing:t.checkCookieGroupConsent("marketing"),analytics:t.checkCookieGroupConsent("statistics")}).filter((function(t){var e=_slicedToArray(t,2),n=(e[0],e[1]);return Boolean(n)})).map((function(t){var e=_slicedToArray(t,2),n=e[0];return e[1],n})).join(",")}catch(t){}return null}():void 0;if(null!==e){var o=l.filter((function(t){return!n(t)}));0===o.length?r():o.forEach((function(t){var n="bottimmo:consent-given:".concat(e);t.contentWindow.postMessage(n,"*")}))}},l.forEach((function(t){window.addEventListener("message",(function(n){n.source===t.contentWindow&&("bottimmo:consent-ready"===n.data?o():"bottimmo:consent-received"===n.data&&e(t))}))})),u=setInterval(o,1e3),setTimeout((function(){u&&(clearInterval(u),u=setInterval(o,5e3),setTimeout((function(){clearInterval(u)}),12e4))}),3e4))}();
+"use strict";
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+(function () {
+  var INTERVAL_INITIAL = 1000;
+  var INTERVAL_SECOND_PHASE = 5000;
+  var TIMEOUT_INITIAL_INTERVAL = 30000;
+  var TIMEOUT_SECOND_PHASE = 120000;
+  var CONSENT_COOKIE_NAME = getConsentCookieName();
+  var isCustomConsentCookieDefined = Boolean(CONSENT_COOKIE_NAME);
+  var iframes = [];
+  var postIntervalId = null;
+  window.addEventListener('bottimmo:element-added', function () {
+    initializeIframes();
+  });
+  initializeIframes();
+
+  if (iframes.length > 0) {
+    synchronizeConsent();
+  }
+
+  function initializeIframes() {
+    var $placeholders = document.querySelectorAll('[data-bottimmo]');
+
+    var _loop = function _loop(i) {
+      var $placeholder = $placeholders[i];
+      var dataset = $placeholder.dataset;
+      var landingpageDomain = "https://" + dataset.company + '.' + window.BOTTIMMO_LP_DOMAIN;
+
+      if ($placeholder.parentElement.tagName === 'HEAD') {
+        warn('If iFrame loader script is placed in the <head> section you should remove all data-* attributes and set them on a dummy <div> inside the body exactly where you want the content to be.');
+        return "continue";
+      }
+
+      if (!dataset.company || !dataset.slug) {
+        warn('Missing attributes on placeholder element: data-company, data-slug');
+        return "continue";
+      }
+
+      if (typeof dataset.initialized !== 'undefined') {
+        return "continue";
+      }
+
+      var iframe = document.createElement('iframe');
+      var srcWithParameters = new URL("".concat(landingpageDomain, "/").concat(dataset.slug, "/embed/"));
+
+      if (dataset.variant) {
+        srcWithParameters.searchParams.append('variant', dataset.variant);
+      }
+
+      var paramWhitelist = document.location.search.split(/[?&]/).filter(function (key) {
+        return /^(utm_|gclid|fbclid)/.test(key);
+      });
+
+      var _iterator = _createForOfIteratorHelper(paramWhitelist),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var parameter = _step.value;
+
+          var _parameter$split = parameter.split(/=(.+)/),
+              _parameter$split2 = _slicedToArray(_parameter$split, 2),
+              key = _parameter$split2[0],
+              value = _parameter$split2[1];
+
+          srcWithParameters.searchParams.append(key, value);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      iframe.src = srcWithParameters.href;
+      iframe.style.cssText = 'width: 100%; height: 500px; overflow: auto; border: none;';
+      $placeholder.parentNode.insertBefore(iframe, $placeholder);
+      iframes.push(iframe);
+      var script = document.createElement('script');
+      script.src = btmJsVars.pluginDir + "/build/assets/js/resizer.js";
+      script.async = true;
+
+      script.onload = function () {
+        window.iFrameResize({
+          checkOrigin: false,
+          log: false
+        }, iframe);
+      };
+
+      $placeholder.parentNode.insertBefore(script, $placeholder);
+      $placeholder.setAttribute('data-initialized', '');
+    };
+
+    for (var i = 0; i < $placeholders.length; i++) {
+      var _ret = _loop(i);
+
+      if (_ret === "continue") continue;
+    }
+  }
+
+  function synchronizeConsent() {
+    var consentReceived = new Map();
+
+    var setConsentReceived = function setConsentReceived(iframe) {
+      return consentReceived.set(iframe, true);
+    };
+
+    var hasConsentReceived = function hasConsentReceived(iframe) {
+      return consentReceived.has(iframe);
+    };
+
+    var stopInterval = function stopInterval() {
+      clearInterval(postIntervalId);
+      postIntervalId = null;
+    };
+
+    var postConsent = function postConsent() {
+      var consentGivenFor = getGivenConsent();
+
+      if (consentGivenFor !== null) {
+        var pendingIframes = iframes.filter(function (iframe) {
+          return !hasConsentReceived(iframe);
+        });
+
+        if (pendingIframes.length === 0) {
+          stopInterval();
+        } else {
+          pendingIframes.forEach(function (iframe) {
+            var message = "bottimmo:consent-given:".concat(consentGivenFor);
+            iframe.contentWindow.postMessage(message, '*');
+          });
+        }
+      }
+    };
+
+    iframes.forEach(function (iframe) {
+      window.addEventListener('message', function (evt) {
+        if (evt.source === iframe.contentWindow) {
+          if (evt.data === 'bottimmo:consent-ready') {
+            postConsent();
+          } else if (evt.data === 'bottimmo:consent-received') {
+            setConsentReceived(iframe);
+          }
+        }
+      });
+    });
+    postIntervalId = setInterval(postConsent, INTERVAL_INITIAL);
+    setTimeout(function () {
+      if (postIntervalId) {
+        clearInterval(postIntervalId);
+        postIntervalId = setInterval(postConsent, INTERVAL_SECOND_PHASE);
+        setTimeout(function () {
+          clearInterval(postIntervalId);
+        }, TIMEOUT_SECOND_PHASE);
+      }
+    }, TIMEOUT_INITIAL_INTERVAL);
+  }
+
+  function getGivenConsent() {
+    if (isCustomConsentCookieDefined) {
+      return readCustomConsentCookie();
+    } else if (window.Cookiebot) {
+      return readCookiebot();
+    } else if (window.BorlabsCookie) {
+      return readBorlabs();
+    }
+  }
+
+  function readCustomConsentCookie() {
+    var cookie = (document.cookie.split('; ') || []).find(function (cookie) {
+      return cookie.startsWith(CONSENT_COOKIE_NAME);
+    });
+
+    if (cookie) {
+      return cookie.split('=')[1].split(',').map(function (type) {
+        return type.trim();
+      }).filter(function (type) {
+        return Boolean(type);
+      }).join(',');
+    }
+
+    return null;
+  }
+
+  function readCookiebot() {
+    try {
+      var _window = window,
+          Cookiebot = _window.Cookiebot;
+
+      if (Cookiebot.consented || Cookiebot.declined) {
+        var consent = Cookiebot.consent;
+        return Object.entries({
+          mandatory: consent.necessary,
+          marketing: consent.marketing,
+          analytics: consent.statistics
+        }).filter(function (_ref) {
+          var _ref2 = _slicedToArray(_ref, 2),
+              key = _ref2[0],
+              value = _ref2[1];
+
+          return Boolean(value);
+        }).map(function (_ref3) {
+          var _ref4 = _slicedToArray(_ref3, 2),
+              key = _ref4[0],
+              value = _ref4[1];
+
+          return key;
+        }).join(',');
+      }
+    } catch (err) {}
+
+    return null;
+  }
+
+  function readBorlabs() {
+    try {
+      var _window2 = window,
+          BorlabsCookie = _window2.BorlabsCookie;
+
+      if (BorlabsCookie.checkCookieGroupConsent('essential')) {
+        return Object.entries({
+          mandatory: true,
+          marketing: BorlabsCookie.checkCookieGroupConsent('marketing'),
+          analytics: BorlabsCookie.checkCookieGroupConsent('statistics')
+        }).filter(function (_ref5) {
+          var _ref6 = _slicedToArray(_ref5, 2),
+              key = _ref6[0],
+              value = _ref6[1];
+
+          return Boolean(value);
+        }).map(function (_ref7) {
+          var _ref8 = _slicedToArray(_ref7, 2),
+              key = _ref8[0],
+              value = _ref8[1];
+
+          return key;
+        }).join(',');
+      }
+    } catch (err) {}
+
+    return null;
+  }
+
+  function getConsentCookieName() {
+    var name = null;
+
+    if (document.currentScript) {
+      name = document.currentScript.dataset.consentCookie || null;
+    }
+
+    return name;
+  }
+
+  function warn(message) {
+    window.console && console.warn("BOTTIMMO: ".concat(message));
+  }
+})();

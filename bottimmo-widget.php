@@ -62,7 +62,7 @@ function bottimmo_widget_settings_page() {
         'BOTTIMMO',
         'BOTTIMMO Widgets',
         'manage_options',
-        'bottimmo_widget',
+        'bottimmo-widget',
         'bottimmo_widget_render_plugin_settings_page'
     );
 }
@@ -70,7 +70,7 @@ add_action( 'admin_menu', 'bottimmo_widget_settings_page' );
 
 function bottimmo_widget_render_plugin_settings_page() {
 	?>
-	<h2><?php echo __('BOTTIMMO', 'bottimmo_widget'); ?></h2>
+	<h2><?php echo esc_html(__('BOTTIMMO', 'bottimmo-widget')); ?></h2>
 	<form action="options.php" method="post">
         <?php 
         settings_fields( BOTTIMMO_WIDGET_OPTIONS );
@@ -109,8 +109,8 @@ function bottimmo_widget_example_plugin_options_validate( $input ) {
 }
 
 function bottimmo_widget_plugin_section_text() {
-    echo '<p>' . __('Hier setzen Sie bitte Ihr individuelles Firmen-Kürzel <strong>(Slug)</strong>.', 'bottimmo_widget') . '</p>';
-    echo '<p>' . __('Eine Änderung des Slugs wirkt sich NICHT auf bereits vorhandene Widgets aus!<br>Bitte speichern Sie bestehende Widgets jeweils neu.', 'bottimmo_widget') . '</p>';
+    echo '<p>' . wp_kses(__('Hier setzen Sie bitte Ihr individuelles Firmen-Kürzel <strong>(Slug)</strong>.', 'bottimmo-widget'), 'strong') . '</p>';
+    echo '<p>' . esc_html(__('Eine Änderung des Slugs wirkt sich NICHT auf bereits vorhandene Widgets aus! Bitte speichern Sie bestehende Widgets jeweils neu.', 'bottimmo-widget')) . '</p>';
 }
 
 function bottimmo_widget_setting_slug() {
@@ -124,31 +124,38 @@ function bottimmo_widget_setting_slug() {
 function bottimmo_widget_append_javascript() {
   wp_enqueue_script(
     'bottimmo_widget_settings_loader',
-    str_replace( ABSPATH, '/', __DIR__ ) . '/build/assets/js/settings.inc.js',
+    plugins_url('/build/assets/js/settings.inc.js', __FILE__),
     false,
     '1.0'
   );
-    wp_enqueue_script(
-      'bottimmo_widget_iframe_loader',
-      str_replace( ABSPATH, '/', __DIR__ ) . '/build/assets/js/iframe-loader.js',
-      false,
-      '1.0'
-    );
+  wp_enqueue_script(
+    'bottimmo_widget_iframe_loader',
+    plugins_url('/build/assets/js/iframe-loader.js', __FILE__),
+    false,
+    '1.0'
+  );
+  $translation_array = array('pluginDir' => plugins_url('', __FILE__) );
+  wp_localize_script( 'bottimmo_widget_iframe_loader', 'btmJsVars', $translation_array );
 }
 add_action('wp_footer', 'bottimmo_widget_append_javascript');
 
 function bottimmo_widget_append_admin_script() {
   wp_enqueue_script(
     'bottimmo_widget_settings_loader',
-    str_replace( ABSPATH, '/', __DIR__ ) . '/build/assets/js/settings.inc.js',
+    plugins_url('/build/assets/js/settings.inc.js', __FILE__),
     false,
     '1.0'
   );
   wp_enqueue_script(
     'bottimmo_widget_iframe_loader',
-    str_replace( ABSPATH, '/', __DIR__ ) . '/build/assets/js/iframe-loader.js',
+    plugins_url('/build/assets/js/iframe-loader.js', __FILE__),
     false,
     '1.0'
   );
+  $translation_array = array(
+    'pluginDir' => plugins_url('', __FILE__),
+    'adminUrl' => admin_url('options-general.php?page=bottimmo-widget')
+  );
+  wp_localize_script( 'bottimmo_widget_iframe_loader', 'btmJsVars', $translation_array );
 }
 add_action( 'admin_enqueue_scripts', 'bottimmo_widget_append_admin_script' );

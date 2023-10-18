@@ -10,7 +10,7 @@ export default function CompanySlug({ onFetchHandler }) {
   const [isSlugValid, setIsSlugValid] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const textDomain = 'bottimmo-widget'
-  const adminPath = '/wp-admin/options-general.php?page=bottimmo_widget'
+  const adminPath = btmJsVars.adminUrl
 
   useEffect(() => {
     apiFetch({ path: '/bottimmo-widget/v1/company-slug' })

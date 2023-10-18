@@ -1,1 +1,1 @@
-window.BOTTIMMO_LP_DOMAIN="immowissen.org";
+(() => window.BOTTIMMO_LP_DOMAIN = "immowissen.org")()

@@ -39,7 +39,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var $placeholder = $placeholders[i];
       var dataset = $placeholder.dataset;
       var landingpageDomain = "https://" + dataset.company + '.' + window.BOTTIMMO_LP_DOMAIN;
-      console.log('****landingpageDomain', landingpageDomain)
 
       if ($placeholder.parentElement.tagName === 'HEAD') {
         warn('If iFrame loader script is placed in the <head> section you should remove all data-* attributes and set them on a dummy <div> inside the body exactly where you want the content to be.');
@@ -91,7 +90,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       $placeholder.parentNode.insertBefore(iframe, $placeholder);
       iframes.push(iframe);
       var script = document.createElement('script');
-      script.src = "/wp-content/plugins/bottimmo-widget/build/assets/js/resizer.js";
+      script.src = btmJsVars.pluginDir + "/build/assets/js/resizer.js";
       script.async = true;
 
       script.onload = function () {
